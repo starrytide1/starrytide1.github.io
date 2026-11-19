@@ -1,0 +1,69 @@
+/* ============================================================
+   DESIGN TOKENS — 子夜档案馆
+   暖咖啡米白纸张主题：主色 60% / 辅助褐 30% / 赤陶强调 10%
+   ============================================================ */
+:root {
+  /* ---- 色彩：语义别名 ---- */
+  --color-bg:          #F2EBDF;  /* 燕麦纸，主背景 */
+  --color-bg-deep:     #E7DCC9;  /* 深一档纸张，用于分隔带 */
+  --color-surface:     #FBF7EF;  /* 档案卡表面 */
+  --color-surface-2:   #EFE5D4;  /* 次级表面 */
+  --color-ink:         #2C231C;  /* 浓缩咖啡墨，标题 */
+  --color-text:        #3B2F26;  /* 正文暖近黑 */
+  --color-muted:       #6B5B4B;  /* 暖灰褐，辅助文字（对米白 5.5:1 / 对深纸张 4.8:1） */
+  --color-line:        #CDBCA5;  /* 纸纤维分隔线 */
+  --color-line-strong: #917D62;  /* 强调分隔线 / 输入边框（≥3:1） */
+  --color-accent:      #A6532E;  /* 赤陶咖啡，唯一强调色 */
+  --color-accent-dark: #8B4223;  /* 强调色按下态 */
+  --color-seal:        #8E3B24;  /* 火漆印章深赤褐 */
+  --color-dark-bg:     #2E251D;  /* 深色区块：档案馆夜色 */
+  --color-dark-surface:#3A2F25;
+  --color-dark-text:   #F4ECDD;
+  --color-dark-muted:  #C3B29A;
+  --color-dark-line:   rgba(244, 236, 221, .16);
+
+  /* ---- 字体 ---- */
+  --font-display: "Playfair Display", "Noto Serif SC", Georgia, serif;
+  --font-body:    "Noto Serif SC", Georgia, "Songti SC", serif;
+  --font-type:    "Special Elite", "Courier New", monospace; /* 打字机标签 */
+
+  /* ---- 字阶：1.25 模块化比例，clamp 响应式 ---- */
+  --text-xs:   clamp(0.70rem, 0.68rem + 0.10vw, 0.75rem);
+  --text-sm:   clamp(0.82rem, 0.79rem + 0.14vw, 0.90rem);
+  --text-base: clamp(0.98rem, 0.94rem + 0.18vw, 1.06rem);
+  --text-lg:   clamp(1.12rem, 1.06rem + 0.28vw, 1.28rem);
+  --text-xl:   clamp(1.45rem, 1.32rem + 0.60vw, 1.85rem);
+  --text-2xl:  clamp(2.10rem, 1.75rem + 1.60vw, 3.30rem);
+  --text-3xl:  clamp(3.10rem, 2.30rem + 3.60vw, 6.40rem);
+
+  --leading-tight: 1.02;
+  --leading-snug:  1.25;
+  --leading-body:  1.85;   /* 中文正文 */
+  --tracking-display: -0.035em;
+  --tracking-type: 0.10em;
+  --tracking-body: 0.02em;
+
+  /* ---- 空间梯度 ---- */
+  --space-1: 4px;  --space-2: 8px;  --space-3: 16px; --space-4: 24px;
+  --space-5: 40px; --space-6: 64px; --space-7: 96px; --space-8: 132px;
+
+  /* ---- 圆角：纸张感，克制 ---- */
+  --radius-xs: 2px;
+  --radius-sm: 5px;
+  --radius-md: 12px;
+  --radius-lg: 22px;
+
+  /* ---- 阴影：带环境暖色，不用纯黑 ---- */
+  --shadow-1: 0 2px 8px rgba(70, 45, 28, .10);
+  --shadow-2: 0 10px 28px rgba(70, 45, 28, .15);
+  --shadow-3: 0 26px 60px rgba(62, 38, 22, .22);
+
+  /* ---- 动效 ---- */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 160ms;
+  --dur-base: 340ms;
+  --dur-slow: 720ms;
+
+  --wrap: 1240px;
+}
