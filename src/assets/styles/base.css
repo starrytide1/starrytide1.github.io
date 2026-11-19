@@ -1,0 +1,117 @@
+/* ============================================================
+   BASE — 重置、排版、焦点与降级动效
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 96px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: var(--leading-body);
+  letter-spacing: var(--tracking-body);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, p, dl, dd, blockquote, figure { margin: 0; }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+img, svg { display: block; max-width: 100%; }
+button, input { font: inherit; color: inherit; }
+a { color: inherit; text-decoration: none; }
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  color: var(--color-ink);
+  font-weight: 700;
+  letter-spacing: var(--tracking-display);
+  line-height: var(--leading-snug);
+}
+
+em { font-style: italic; font-weight: 600; }
+
+::selection { background: var(--color-accent); color: var(--color-surface); }
+
+/* ---- 可访问性 ---- */
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+}
+
+.skip-link {
+  position: fixed; top: 8px; left: 8px; z-index: 1000;
+  padding: 10px 16px; background: var(--color-ink); color: var(--color-surface);
+  border-radius: var(--radius-sm); transform: translateY(-160%);
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+.skip-link:focus { transform: translateY(0); }
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: var(--radius-xs);
+}
+
+/* ---- 通用工具 ---- */
+.wrap {
+  width: min(100% - 2 * var(--space-4), var(--wrap));
+  margin-inline: auto;
+}
+
+.type-label {
+  display: inline-block;
+  font-family: var(--font-type);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-type);
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.desktop-only { display: inline; }
+
+/* ---- 入场：页面载入序列（hero 用 animation） ---- */
+.hero-anim {
+  animation: riseIn var(--dur-slow) var(--ease-out) both;
+  animation-delay: var(--d, 0ms);
+}
+
+@keyframes riseIn {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* ---- 滚动入场（v-reveal 指令添加 .in） ---- */
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition:
+    opacity var(--dur-base) var(--ease-out) var(--d, 0ms),
+    transform var(--dur-base) var(--ease-out) var(--d, 0ms);
+}
+.reveal.in { opacity: 1; transform: none; }
+
+/* ---- 全局降级：尊重减少动效偏好 ---- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+  }
+  .reveal, .hero-anim { opacity: 1 !important; transform: none !important; }
+}
+
+@media (max-width: 640px) {
+  .desktop-only { display: none; }
+  html { scroll-padding-top: 76px; }
+}
